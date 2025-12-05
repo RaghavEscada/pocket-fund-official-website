@@ -13,14 +13,15 @@ export function LampHero({ title, subtitle }: LampHeroProps) {
   return (
     <LampContainer>
       <motion.div
-        initial={{ opacity: 0.5, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{
-          delay: 0.3,
-          duration: 0.8,
-          ease: "easeInOut",
+          delay: 0.2,
+          duration: 0.5,
+          ease: "easeOut",
         }}
         className="mt-8 text-center"
+        style={{ willChange: "opacity, transform" }}
       >
         <h1 className="bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-7xl">
           {title}

@@ -132,7 +132,7 @@ const Menu = () => {
           <div className="p-8 md:p-12 flex flex-col md:flex-row justify-between items-end md:items-center text-sm border-t border-gray-200">
             <div className="space-y-2 items-end mb-4 md:mb-0">
               <a
-                href="https://www.linkedin.com/company/pocketfund"
+                href="https://www.linkedin.com/company/pocket-fund"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-gray-700 hover:text-blue-600 transition-colors duration-300"
@@ -140,7 +140,7 @@ const Menu = () => {
                 LinkedIn ↗
               </a>
               <a
-                href="https://www.twitter.com/pocketfund"
+                href="https://x.com/microsearchfund"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-gray-700 hover:text-blue-600 transition-colors duration-300"
@@ -148,12 +148,12 @@ const Menu = () => {
                 Twitter ↗
               </a>
               <a
-                href="https://www.facebook.com/pocketfund"
+                href="https://www.instagram.com/devlikesbizness/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-gray-700 hover:text-blue-600 transition-colors duration-300"
               >
-                Facebook ↗
+                Instagram ↗
               </a>
             </div>
 
