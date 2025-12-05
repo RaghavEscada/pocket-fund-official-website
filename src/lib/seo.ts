@@ -63,9 +63,9 @@ export function generateOrganizationSchema() {
     url: "https://pocketfund.com",
     logo: "https://pocketfund.com/logo.png",
     sameAs: [
-      "https://www.facebook.com/pocketfund",
-      "https://www.twitter.com/pocketfund",
-      "https://www.linkedin.com/company/pocketfund",
+      "https://www.linkedin.com/company/pocket-fund",
+      "https://x.com/microsearchfund",
+      "https://www.instagram.com/devlikesbizness/",
     ],
   });
 }
