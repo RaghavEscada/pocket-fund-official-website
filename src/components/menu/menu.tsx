@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 
 const menulinks = [
@@ -19,6 +20,7 @@ const Menu = () => {
   const menuRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
@@ -92,9 +94,12 @@ const Menu = () => {
       {mounted && (
         <div
           ref={menuRef}
-          className="fixed inset-0 bg-white z-50 flex flex-col transform -translate-x-full"
+          className="fixed inset-0 z-50 flex flex-col transform -translate-x-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(/images/People/menubg.jpeg)',
+          }}
         >
-          <div className="flex justify-between items-center p-4 border-b border-gray-200">
+          <div className="flex justify-between items-center p-4 border-b border-white/20">
             <div className="flex items-center">
               <Link href="/" onClick={toggleMenu} className="flex items-center">
                 <Image
@@ -108,34 +113,40 @@ const Menu = () => {
               </Link>
             </div>
             <button
-              className="cursor-pointer uppercase text-sm tracking-wider text-blue-600 hover:text-blue-700 transition-colors duration-300 font-semibold"
+              className="cursor-pointer uppercase text-sm tracking-wider text-white hover:text-blue-300 transition-colors duration-300 font-semibold"
               onClick={toggleMenu}
             >
               Close &#10005;
             </button>
           </div>
 
-          <nav className="flex-grow flex flex-col justify-center px-8 md:pl-40 lg:pl-96 space-y-2">
-            {menulinks.map((link, index) => (
-              <div key={index} className="menu-link group">
-                <Link
-                  href={link.path}
-                  onClick={toggleMenu}
-                  className="text-4xl md:text-7xl font-serif text-gray-900 bg-clip-text hover:bg-gradient-to-t hover:from-blue-500 hover:via-blue-600 hover:to-blue-700 hover:text-transparent transition-all duration-500 ease-in-out"
-                >
-                  {link.label}
-                </Link>
-              </div>
-            ))}
+          <nav className="flex-grow flex flex-col justify-center px-8 md:pl-18 lg:pl-[14rem] space-y-2">
+            {menulinks.map((link, index) => {
+              const isActive = pathname === link.path || (link.path !== "/" && pathname.startsWith(link.path));
+              return (
+                <div key={index} className="menu-link group flex items-center gap-4">
+                  {isActive && (
+                    <div className="w-3 h-3 bg-green-500 rounded-full flex-shrink-0"></div>
+                  )}
+                  <Link
+                    href={link.path}
+                    onClick={toggleMenu}
+                    className="text-4xl md:text-7xl font-serif text-white bg-clip-text hover:bg-gradient-to-t hover:from-blue-300 hover:via-blue-400 hover:to-blue-500 hover:text-transparent transition-all duration-500 ease-in-out drop-shadow-lg"
+                  >
+                    {link.label}
+                  </Link>
+                </div>
+              );
+            })}
           </nav>
 
-          <div className="p-8 md:p-12 flex flex-col md:flex-row justify-between items-end md:items-center text-sm border-t border-gray-200">
+          <div className="p-8 md:p-12 flex flex-col md:flex-row justify-between items-end md:items-center text-sm border-t border-white/20">
             <div className="space-y-2 items-end mb-4 md:mb-0">
               <a
                 href="https://www.linkedin.com/company/pocket-fund"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-gray-700 hover:text-blue-600 transition-colors duration-300"
+                className="block text-white hover:text-blue-300 transition-colors duration-300"
               >
                 LinkedIn ↗
               </a>
@@ -143,7 +154,7 @@ const Menu = () => {
                 href="https://x.com/microsearchfund"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-gray-700 hover:text-blue-600 transition-colors duration-300"
+                className="block text-white hover:text-blue-300 transition-colors duration-300"
               >
                 Twitter ↗
               </a>
@@ -151,20 +162,20 @@ const Menu = () => {
                 href="https://www.instagram.com/devlikesbizness/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-gray-700 hover:text-blue-600 transition-colors duration-300"
+                className="block text-white hover:text-blue-300 transition-colors duration-300"
               >
                 Instagram ↗
               </a>
             </div>
 
-            <div className="space-y-2 text-gray-700">
+            <div className="space-y-2 text-white">
               <a
                 href="mailto:hello@pocket-fund.com"
-                className="block hover:text-blue-600 transition-colors duration-300"
+                className="block hover:text-blue-300 transition-colors duration-300"
               >
                 hello@pocket-fund.com
               </a>
-              <p className="text-gray-700">
+              <p className="text-white">
                 Mumbai, India
               </p>
             </div>
