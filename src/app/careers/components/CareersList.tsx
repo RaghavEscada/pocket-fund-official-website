@@ -66,7 +66,7 @@ export function CareersList() {
             <p className="text-gray-500">Check back soon for new opportunities!</p>
           </div>
         ) : (
-          <div className="space-y-6">
+        <div className="space-y-6">
             {jobs.map((job) => (
               <div
                 key={job.id}
@@ -136,9 +136,9 @@ export function CareersList() {
                     </ul>
                   </div>
                 )}
-              </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
         )}
       </div>
 

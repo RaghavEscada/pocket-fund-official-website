@@ -4,6 +4,13 @@ import { motion } from 'framer-motion';
 import { Users, Calendar, TrendingUp, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-montserrat",
+});
 
 const stats = [
   {
@@ -30,7 +37,7 @@ const stats = [
 
 export function Stats() {
   return (
-    <section className="py-20 bg-white">
+    <section className={`py-20 bg-white ${montserrat.variable}`} style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Text Content */}

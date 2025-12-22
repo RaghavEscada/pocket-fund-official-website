@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Roboto } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Menu from "@/components/menu/menu";
 import Footer from "@/components/footer/footer";
 import { SITE_CONFIG } from "@/lib/constants";
 import { generateMetadata as genMeta } from "@/lib/seo";
 
-const roboto = Roboto({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-roboto",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-montserrat",
 });
 
 export const metadata: Metadata = {
@@ -32,7 +32,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable} antialiased bg-white`} // Apply the font variables
+        className={`${montserrat.variable} antialiased bg-white`}
+        style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
       >
         <div className="sticky top-0 z-50 bg-white shadow-md">
           <Menu />

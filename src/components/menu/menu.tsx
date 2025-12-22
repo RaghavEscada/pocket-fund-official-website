@@ -73,7 +73,7 @@ const Menu = () => {
               loading="lazy"
             />
           </Link>
-          <span className="text-xl font-bold text-gray-900">Pocket Fund</span>
+          <span className="text-xl font-bold text-gray-900 tracking-tight">Pocket Fund</span>
         </div>
         <div className="flex items-center gap-4">
           <button

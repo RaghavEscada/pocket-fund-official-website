@@ -3,6 +3,13 @@
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { ShoppingCart, Lightbulb, Database, Users, Target, Zap } from 'lucide-react';
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-montserrat",
+});
 
 const services = [
   {
@@ -39,7 +46,7 @@ const services = [
 
 export function WhatWeDo() {
   return (
-    <section className="py-20 bg-white">
+    <section className={`py-20 bg-white ${montserrat.variable}`} style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

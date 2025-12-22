@@ -76,8 +76,9 @@ export function WorldMap({
                   pathLength: 1,
                 }}
                 transition={{
-                  duration: 1,
-                  delay: 0.5 * i,
+                  // Faster, less staggered animation so the map draws quickly
+                  duration: 0.6,
+                  delay: 0.18 * i,
                   ease: "easeOut",
                 }}
                 key={`start-upper-${i}`}

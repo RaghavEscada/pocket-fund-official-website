@@ -1,6 +1,6 @@
 // Assembles all careers page components
 export { CareersHero } from './components/CareersHero';
-export { CareersHeroNew } from './components/CareersHeroNew';
+export { CareersHeroNew } from './components/CareersHero';
 export { CareersList } from './components/CareersList';
 export { CareersBenefits } from './components/CareersBenefits';
 export { CompanyCulture } from './components/CompanyCulture';

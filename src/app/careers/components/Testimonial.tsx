@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export function Testimonial() {
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
@@ -7,12 +9,13 @@ export function Testimonial() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
           <div className="relative h-[400px] rounded-lg overflow-hidden bg-white border-2 border-gray-200 shadow-sm">
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="text-gray-400 text-center p-8">
-                <p className="text-lg mb-2">Team Member Image</p>
-                <p className="text-sm">Add testimonial image here</p>
-              </div>
-            </div>
+            <Image
+              src="/images/raghav.png"
+              alt="Raghav Krishna"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
           </div>
 
           {/* Testimonial Content */}

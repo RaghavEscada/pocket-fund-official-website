@@ -2,6 +2,13 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight, Award, Play, ChevronDown } from "lucide-react";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-montserrat",
+});
 
 // Compact Text Flip Component
 const cn = (...classes: (string | undefined)[]) => {
@@ -43,12 +50,13 @@ export function ContainerTextFlip({
     <div className="relative inline-block">
       <span
         className={cn(
-          "inline-block text-xl md:text-2xl lg:text-3xl font-bold transition-all duration-500",
+          "inline-block text-xl md:text-2xl lg:text-3xl font-bold transition-all duration-500 tracking-tight",
           "bg-gradient-to-r from-blue-400 via-blue-600 to-blue-400 bg-clip-text text-transparent",
           "drop-shadow-sm",
           isAnimating ? "opacity-0 transform translate-y-2 scale-95" : "opacity-100 transform translate-y-0 scale-100",
           className,
         )}
+        style={{ letterSpacing: '-0.01em' }}
       >
         {words[currentWordIndex]}
       </span>
@@ -194,7 +202,7 @@ export function HomeHero() {
   }, []);
 
   return (
-    <div className="w-full">
+    <div className={`w-full ${montserrat.variable}`} style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
       <style>{`
         @keyframes shimmer {
           0% { background-position: 0% 50%; }
@@ -220,53 +228,75 @@ export function HomeHero() {
       `}</style>
 
       {/* Hero Section */}
-      <div className="min-h-screen flex flex-col justify-center bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      <div className="min-h-screen flex flex-col justify-center bg-gradient-to-b from-white via-gray-50/30 to-white relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-[#366EF3]/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#366EF3]/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left: Content */}
-            <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
+            <div className="space-y-8 sm:space-y-10 text-center lg:text-left">
               {/* Badge */}
-              <AnimatedDiv className="inline-flex items-center bg-blue-100 border border-blue-200 rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-6 sm:mb-8">
-                <Award className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2 sm:mr-3" />
-                <span className="text-xs sm:text-sm font-semibold text-blue-800">First-of-its-kind Micro Private Equity Firm</span>
+              <AnimatedDiv className="inline-flex items-center bg-gradient-to-r from-[#366EF3]/10 to-[#366EF3]/5 border border-[#366EF3]/20 rounded-full px-5 sm:px-6 py-2.5 sm:py-3 shadow-sm">
+                <Award className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: '#366EF3' }} />
+                <span className="text-xs sm:text-sm font-semibold ml-2.5" style={{ fontFamily: 'var(--font-montserrat), sans-serif', color: '#366EF3' }}>
+                  First-of-its-kind Micro Private Equity Firm
+                </span>
               </AnimatedDiv>
 
               {/* Main Headline */}
-              <AnimatedDiv delay={100}>
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
-                  <span className="text-blue-600">Pocket Fund</span>
+              <AnimatedDiv delay={100} className="space-y-4">
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-gray-900 leading-[1.1] tracking-tight" style={{ fontFamily: 'var(--font-montserrat), sans-serif', letterSpacing: '-0.03em' }}>
+                  <span style={{ color: '#366EF3' }}>Pocket Fund</span>
                 </h1>
               </AnimatedDiv>
 
               {/* Dynamic Subheadline - Restructured */}
-              <AnimatedDiv delay={200} className="space-y-3 sm:space-y-4">
-                <div className="text-xl sm:text-2xl md:text-3xl text-gray-700 font-medium">
+              <AnimatedDiv delay={200} className="space-y-4">
+                <div className="text-2xl sm:text-3xl md:text-4xl text-gray-700 font-semibold tracking-tight" style={{ fontFamily: 'var(--font-montserrat), sans-serif', letterSpacing: '-0.02em' }}>
                   Transforms Ideas Into
                 </div>
-                <div className="flex justify-center lg:justify-start">
+                <div className="flex justify-center lg:justify-start min-h-[3rem] sm:min-h-[4rem] md:min-h-[5rem]">
                   <ContainerTextFlip
                     words={["Acquisitions", "Deal Flow", "Portfolio Companies", "Strategic Roll-Ups", "Successful Exits"]}
                     interval={1800}
                     animationDuration={400}
-                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight"
+                    textClassName="tracking-tight"
                   />
                 </div>
               </AnimatedDiv>
 
               {/* Value Proposition */}
               <AnimatedDiv delay={300}>
-                <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl lg:max-w-none">
+                <p className="text-lg sm:text-xl md:text-2xl text-gray-600 leading-relaxed max-w-2xl lg:max-w-none font-normal" style={{ fontFamily: 'var(--font-montserrat), sans-serif', letterSpacing: '0' }}>
                   Pocket Fund bridges the gap between ambitious buyers and quality deals
                 </p>
               </AnimatedDiv>
 
               {/* CTA Buttons */}
-              <AnimatedDiv delay={500} className="flex flex-col sm:flex-row gap-4 pt-4">
-                <a href="/#contact" className="group px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white font-semibold rounded-xl shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2">
+              <AnimatedDiv delay={500} className="flex flex-col sm:flex-row gap-4 pt-6">
+                <a 
+                  href="/#contact" 
+                  className="group px-8 sm:px-10 py-4 sm:py-5 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-2 text-base sm:text-lg" 
+                  style={{ 
+                    fontFamily: 'var(--font-montserrat), sans-serif',
+                    backgroundColor: '#366EF3',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2d5dd9'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#366EF3'}
+                >
                   Start Your Search
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </a>
-                <a href="/#timeline" className="group px-6 sm:px-8 py-3 sm:py-4 border-2 border-gray-200 text-gray-700 bg-white rounded-xl hover:border-blue-200 hover:text-blue-600 transition-all duration-300 flex items-center justify-center gap-2">
+                <a 
+                  href="/#timeline" 
+                  className="group px-8 sm:px-10 py-4 sm:py-5 border-2 border-gray-300 text-gray-700 bg-white rounded-xl hover:border-[#366EF3] hover:text-[#366EF3] transition-all duration-300 flex items-center justify-center gap-2 text-base sm:text-lg font-semibold shadow-sm hover:shadow-md" 
+                  style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
+                >
                   <Play className="w-5 h-5" />
                   Our Process
                 </a>
@@ -274,10 +304,10 @@ export function HomeHero() {
             </div>
 
             {/* Right: Enhanced Visual */}
-            <AnimatedDiv delay={600} className="flex items-center justify-center mt-8 lg:mt-0">
-              <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-xl">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 rounded-3xl blur-3xl opacity-10"></div>
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20 bg-white/10 backdrop-blur-sm">
+            <AnimatedDiv delay={600} className="flex items-center justify-center mt-12 lg:mt-0">
+              <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-2xl">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#366EF3]/20 to-[#366EF3]/10 rounded-3xl blur-3xl opacity-60"></div>
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-[#366EF3]/10 bg-white/50 backdrop-blur-sm">
                   <LottiePlayer src="https://cdn.lottielab.com/l/5Gn1jXUt1kSREm.json" />
                 </div>
               </div>
@@ -286,8 +316,8 @@ export function HomeHero() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="text-center pb-8">
-          <ChevronDown className="w-6 h-6 text-gray-400 mx-auto animate-bounce" />
+        <div className="text-center pb-12 pt-8">
+          <ChevronDown className="w-6 h-6 mx-auto animate-bounce" style={{ color: '#366EF3' }} />
         </div>
       </div>
 

@@ -3,6 +3,13 @@
 import { motion } from 'framer-motion';
 import { Search, FileText, Handshake, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-montserrat",
+});
 
 const phases = [
   {
@@ -33,7 +40,7 @@ const phases = [
 
 export function HowWeWork() {
   return (
-    <section id="timeline" className="py-32 bg-white">
+    <section id="timeline" className={`py-32 bg-white ${montserrat.variable}`} style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -54,8 +61,8 @@ export function HowWeWork() {
         {/* Horizontal Timeline - Desktop */}
         <div className="hidden lg:block max-w-7xl mx-auto">
           <div className="relative">
-            {/* Connecting Line */}
-            <div className="absolute top-24 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
+            {/* Connecting Line - trimmed so it doesn't extend past first/last circles */}
+            <div className="absolute top-24 left-[12.5%] right-[12.5%] h-1 bg-black" />
             
             <div className="grid grid-cols-4 gap-6">
               {phases.map((phase, index) => (
@@ -71,7 +78,7 @@ export function HowWeWork() {
                   <div className="flex flex-col items-center mb-6">
                     <div className="relative z-10 w-48 h-48 mb-6">
                       <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full opacity-10 blur-xl" />
-                      <div className="relative w-full h-full bg-white border-2 border-gray-200 rounded-full flex items-center justify-center hover:border-blue-400 transition-all duration-300 group">
+                      <div className="relative w-full h-full bg-white border-4 border-black rounded-full flex items-center justify-center hover:border-gray-800 transition-all duration-300 group">
                         <phase.icon className="w-20 h-20 text-blue-600 group-hover:scale-110 transition-transform duration-300" strokeWidth={1.5} />
                       </div>
                       {/* Number Badge */}
@@ -99,7 +106,7 @@ export function HowWeWork() {
         <div className="lg:hidden max-w-2xl mx-auto">
           <div className="relative">
             {/* Vertical Line */}
-            <div className="absolute left-10 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gray-300 to-transparent" />
+            <div className="absolute left-10 top-0 bottom-0 w-1 bg-black" />
             
             <div className="space-y-12">
               {phases.map((phase, index) => (
@@ -113,7 +120,7 @@ export function HowWeWork() {
                 >
                   {/* Icon Circle */}
                   <div className="absolute left-0 top-0">
-                    <div className="relative w-20 h-20 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center shadow-md">
+                    <div className="relative w-20 h-20 bg-white border-4 border-black rounded-full flex items-center justify-center shadow-md">
                       <phase.icon className="w-10 h-10 text-blue-600" strokeWidth={1.5} />
                     </div>
                     {/* Number Badge */}
@@ -142,7 +149,7 @@ export function HowWeWork() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-24"
+          className="text-center mt-8"
         >
           <Link 
             href="/#contact" 

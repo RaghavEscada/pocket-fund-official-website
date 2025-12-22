@@ -18,9 +18,9 @@ export default function Footer() {
     <footer className="bg-gradient-to-b from-gray-900 to-black text-white h-screen flex flex-col justify-between overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-8">
         {/* Top Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 mb-4 flex-shrink-0">
           {/* Brand Section */}
-          <div className="space-y-3">
+          <div className="space-y-2">
             <div className="flex items-center gap-3">
               <Image
                 src="/Logo/pflogobg.webp"
@@ -34,7 +34,7 @@ export default function Footer() {
             <p className="text-gray-400 text-sm leading-relaxed">
               We love deals.
             </p>
-            <p className="text-gray-400 text-sm leading-relaxed">
+            <p className="text-gray-400 text-xs leading-relaxed">
               Empowering entrepreneurs and funds to build wealth through strategic micro-acquisitions. From deal sourcing to operator placement, we handle the complexity so you can focus on growth.
             </p>
             <div className="flex gap-4 pt-2">
@@ -161,8 +161,8 @@ export default function Footer() {
       </div>
 
       {/* Large Brand Text - Grounded at Bottom */}
-      <div className="w-full pb-0">
-        <h2 className="text-5xl md:text-6xl lg:text-[15rem] font-bold text-center bg-gradient-to-r from-gray-800 via-gray-700 pt-0 to-gray-800 bg-clip-text text-transparent tracking-tighter leading-none whitespace-nowrap">
+      <div className="w-full flex-shrink-0">
+        <h2 className="text-8xl xl:text-[10rem] font-bold text-center bg-gradient-to-r from-gray-800 via-gray-700 pt-0 to-gray-800 bg-clip-text text-transparent tracking-tighter leading-none whitespace-nowrap">
           POCKET FUND
         </h2>
       </div>
