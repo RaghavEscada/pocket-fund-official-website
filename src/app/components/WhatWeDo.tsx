@@ -1,84 +1,57 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { Card } from '@/components/ui/card';
-import { ShoppingCart, Lightbulb, Database, Users, Target, Zap } from 'lucide-react';
-import { Montserrat } from "next/font/google";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-montserrat",
-});
-
 const services = [
   {
-    icon: ShoppingCart,
-    title: 'Micro Acquisitions',
-    description: 'SaaS, newsletters, mobile apps, and niche content sites under $100K',
+    title: "Deal Sourcing",
+    description: "Proprietary deal flow through inbound, outbound, and network-driven origination.",
   },
   {
-    icon: Lightbulb,
-    title: 'Buy-Side Advisory',
-    description: 'For solo buyers, creators, funds, and family offices',
+    title: "Due Diligence",
+    description: "Financial, operational, and risk-focused diligence with operator insight.",
   },
   {
-    icon: Database,
-    title: 'Deal Flow Engine',
-    description: 'Surfaces 30–50 off-market opportunities weekly',
+    title: "Deal Structuring & Negotiation",
+    description: "Buyer-aligned structuring, valuation discipline, and closing support.",
   },
   {
-    icon: Users,
-    title: 'Operator Placement',
-    description: 'Revenue-linked incentives post-acquisition',
+    title: "Transition & Operator Placement",
+    description: "Seamless post-close transitions with vetted operators and advisors.",
   },
   {
-    icon: Target,
-    title: 'Exit Planning',
-    description: 'For portfolio companies with 6–18 month windows',
+    title: "Growth Playbook",
+    description: "Proven execution frameworks across revenue, cost, systems, and talent.",
   },
   {
-    icon: Zap,
-    title: 'Growth Acceleration',
-    description: 'AI workflows, automation, and operational excellence',
+    title: "Exit Preparation",
+    description: "KPI discipline, reporting maturity, and buyer-ready positioning.",
   },
 ];
 
 export function WhatWeDo() {
   return (
-    <section className={`py-20 bg-white ${montserrat.variable}`} style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">What We Do</h2>
-          <p className="text-xl text-gray-600">
-            We are not just investors. We are <span className="text-blue-600 font-semibold">builders</span>
+    <section className="py-32 bg-white">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Section Header */}
+        <div className="mb-20">
+          <h2 className="text-4xl md:text-5xl font-semibold text-neutral-900 mb-4">
+            Core Services
+          </h2>
+          <p className="text-lg text-neutral-600 max-w-2xl">
+            Full investment lifecycle capability from origination to exit.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
           {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="h-full"
-            >
-              <Card className="p-6 h-full hover:shadow-lg transition-all border-2 hover:border-blue-600 bg-white flex flex-col">
-                <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <service.icon className="w-7 h-7 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-900">{service.title}</h3>
-                <p className="text-gray-600 flex-grow">{service.description}</p>
-              </Card>
-            </motion.div>
+            <div key={index} className="border-t border-neutral-200 pt-6">
+              <h3 className="text-2xl font-semibold text-neutral-900 mb-3">
+                {service.title}
+              </h3>
+              <p className="text-neutral-600 leading-relaxed">
+                {service.description}
+              </p>
+            </div>
           ))}
         </div>
       </div>

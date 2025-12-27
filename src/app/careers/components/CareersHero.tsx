@@ -46,18 +46,6 @@ export function CareersHeroNew() {
               </div>
             </div>
 
-            {/* Image below blue box */}
-            <div className="relative mt-8 lg:mt-12 w-full rounded-2xl overflow-hidden border-2 border-white shadow-lg">
-              <div className="relative aspect-[16/10] w-full">
-                <Image
-                  src="/images/Modern Office Concentration.png"
-                  alt="Modern office workspace"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-            </div>
           </div>
 
           {/* Right: Image Grid */}
@@ -111,4 +99,3 @@ export function CareersHeroNew() {
     </section>
   );
 }
-

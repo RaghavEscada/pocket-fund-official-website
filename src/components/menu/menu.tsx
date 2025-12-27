@@ -54,9 +54,8 @@ const Menu = () => {
     }
   }, [isMenuOpen, mounted]);
 
-  // Return null or loading state before client-side hydration
   if (!mounted) {
-    return null; // Or a loading skeleton
+    return null;
   }
 
   return (
@@ -77,16 +76,16 @@ const Menu = () => {
         </div>
         <div className="flex items-center gap-4">
           <button
-            className="cursor-pointer uppercase text-sm tracking-wider text-blue-600 hover:text-blue-700 transition-colors duration-300 font-semibold"
+            className="cursor-pointer uppercase text-sm tracking-wider text-neutral-900 hover:text-neutral-600 transition-colors duration-300 font-semibold"
             onClick={toggleMenu}
           >
             {isMenuOpen ? "Close" : "Menu"}
           </button>
           <Link
             href="/contact"
-            className="hidden md:block bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-all duration-300 uppercase text-sm tracking-wider font-medium"
+            className="hidden md:block border border-neutral-900 text-neutral-900 px-6 py-2 hover:bg-neutral-900 hover:text-white transition-all duration-300 uppercase text-sm tracking-wider font-medium"
           >
-            Get in Touch
+            Contact
           </Link>
         </div>
       </div>
@@ -113,7 +112,7 @@ const Menu = () => {
               </Link>
             </div>
             <button
-              className="cursor-pointer uppercase text-sm tracking-wider text-white hover:text-blue-300 transition-colors duration-300 font-semibold"
+              className="cursor-pointer uppercase text-sm tracking-wider text-white hover:text-neutral-300 transition-colors duration-300 font-semibold"
               onClick={toggleMenu}
             >
               Close &#10005;
@@ -131,7 +130,7 @@ const Menu = () => {
                   <Link
                     href={link.path}
                     onClick={toggleMenu}
-                    className="text-4xl md:text-7xl font-serif text-white bg-clip-text hover:bg-gradient-to-t hover:from-blue-300 hover:via-blue-400 hover:to-blue-500 hover:text-transparent transition-all duration-500 ease-in-out drop-shadow-lg"
+                    className="text-4xl md:text-7xl font-serif text-white hover:text-neutral-300 transition-all duration-300 ease-in-out drop-shadow-lg"
                   >
                     {link.label}
                   </Link>
@@ -146,7 +145,7 @@ const Menu = () => {
                 href="https://www.linkedin.com/company/pocket-fund"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-white hover:text-blue-300 transition-colors duration-300"
+                className="block text-white hover:text-neutral-300 transition-colors duration-300"
               >
                 LinkedIn ↗
               </a>
@@ -154,7 +153,7 @@ const Menu = () => {
                 href="https://x.com/microsearchfund"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-white hover:text-blue-300 transition-colors duration-300"
+                className="block text-white hover:text-neutral-300 transition-colors duration-300"
               >
                 Twitter ↗
               </a>
@@ -162,7 +161,7 @@ const Menu = () => {
                 href="https://www.instagram.com/devlikesbizness/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-white hover:text-blue-300 transition-colors duration-300"
+                className="block text-white hover:text-neutral-300 transition-colors duration-300"
               >
                 Instagram ↗
               </a>
@@ -171,7 +170,7 @@ const Menu = () => {
             <div className="space-y-2 text-white">
               <a
                 href="mailto:hello@pocket-fund.com"
-                className="block hover:text-blue-300 transition-colors duration-300"
+                className="block hover:text-neutral-300 transition-colors duration-300"
               >
                 hello@pocket-fund.com
               </a>
@@ -183,9 +182,9 @@ const Menu = () => {
             <div className="hidden md:block">
               <Link
                 href="/contact"
-                className="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-all duration-300 uppercase text-sm tracking-wider font-medium"
+                className="border border-white text-white px-6 py-3 hover:bg-white hover:text-neutral-900 transition-all duration-300 uppercase text-sm tracking-wider font-medium"
               >
-                Get in Touch
+                Contact
               </Link>
             </div>
           </div>
@@ -194,14 +193,13 @@ const Menu = () => {
 
       {mounted && (
         <>
-
           {!isMenuOpen && (
             <div className="md:hidden fixed bottom-0 left-0 w-full p-4 bg-white text-center border-t border-gray-200 shadow-lg">
               <Link
                 href="/contact"
-                className="bg-blue-600 text-white py-3 px-8 rounded-full text-pretty text-left text-lg font-semibold uppercase shadow-lg hover:bg-blue-700 transition-all duration-300 inline-block"
+                className="border border-neutral-900 text-neutral-900 py-3 px-8 text-lg font-semibold uppercase hover:bg-neutral-900 hover:text-white transition-all duration-300 inline-block"
               >
-                Contact Us
+                Contact
               </Link>
             </div>
           )}

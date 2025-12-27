@@ -25,51 +25,30 @@ export const BentoGridItem = ({
   description,
   header,
   icon,
-  onClick,
 }: {
   className?: string;
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
   header?: React.ReactNode;
   icon?: React.ReactNode;
-  onClick?: () => void;
 }) => {
   return (
     <div
-      onClick={onClick}
       className={cn(
-        "row-span-1 rounded-2xl group/bento hover:shadow-2xl transition-all duration-300 shadow-lg bg-white border-2 border-gray-200 hover:border-[#366EF3] justify-between flex flex-col overflow-hidden",
-        onClick && "cursor-pointer",
+        "row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input p-4 bg-white border-2 border-gray-900 hover:border-blue-600 justify-between flex flex-col space-y-4",
         className
       )}
     >
-      {/* Header/Icon Section */}
-      <div className="flex-shrink-0">
-        {header}
-      </div>
-      
-      {/* Content Section */}
-      <div className="flex-1 flex flex-col justify-between p-6 space-y-4 group-hover/bento:translate-x-1 transition-transform duration-300">
-        <div className="space-y-3">
-          {/* Title */}
-          <div className="flex items-start gap-3">
-            {icon && (
-              <div className="flex-shrink-0 mt-1">
-                {icon}
-              </div>
-            )}
-            <h3 className="text-xl font-bold text-gray-900 leading-tight tracking-tight" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
-              {title}
-            </h3>
-          </div>
-          
-          {/* Description */}
-          <div className="text-sm text-gray-600 leading-relaxed">
-            {description}
-          </div>
+      {header}
+      <div className="group-hover/bento:translate-x-2 transition duration-200">
+        {icon}
+        <div className="font-sans font-bold text-gray-900 mb-2 mt-2">
+          {title}
+        </div>
+        <div className="font-sans font-normal text-gray-600 text-xs">
+          {description}
         </div>
       </div>
     </div>
   );
 };
-

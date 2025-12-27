@@ -1,17 +1,14 @@
 export function AboutHero() {
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-[#003d1f] to-[#005f2a] text-white">
-      <div className="max-w-4xl mx-auto text-center">
-        <h1 className="text-5xl md:text-6xl font-bold mb-6">About Us</h1>
-        <p className="text-xl text-gray-200">
-          Your Trusted Financial Partner
+    <section className="pt-32 pb-20 px-6 bg-white">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-5xl md:text-7xl font-semibold text-neutral-900 mb-8">
+          About Pocket Fund
+        </h1>
+        <p className="text-2xl text-neutral-600 leading-relaxed max-w-3xl">
+          We are a micro private equity firm combining disciplined capital deployment with operator-led execution.
         </p>
       </div>
     </section>
   );
 }
-
-
-
-
-

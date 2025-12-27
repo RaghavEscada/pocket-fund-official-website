@@ -1,38 +1,40 @@
 export function TeamGrid() {
   const teamMembers = [
     {
-      name: "John Smith",
-      role: "Chief Executive Officer",
-      bio: "20+ years of experience in financial services",
+      name: "Dev",
+      role: "Engineering & Systems",
+      description: "Technical infrastructure and operational systems.",
     },
     {
-      name: "Sarah Johnson",
-      role: "Chief Investment Officer",
-      bio: "Expert in portfolio management and strategy",
+      name: "Aadarsh",
+      role: "Deal Sourcing & Analysis",
+      description: "Deal origination and financial analysis.",
     },
     {
-      name: "Michael Chen",
-      role: "Senior Financial Advisor",
-      bio: "Specialized in wealth management and planning",
-    },
-    {
-      name: "Emily Davis",
-      role: "Financial Analyst",
-      bio: "Market research and investment analysis expert",
+      name: "Aniket",
+      role: "Operations & Execution",
+      description: "Portfolio operations and growth execution.",
     },
   ];
 
   return (
-    <section className="py-20 px-6 bg-white">
+    <section className="py-32 px-6 bg-white">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12">Meet Our Experts</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <h2 className="text-4xl md:text-5xl font-semibold text-neutral-900 mb-20">
+          Team
+        </h2>
+        <div className="grid md:grid-cols-3 gap-16">
           {teamMembers.map((member, index) => (
-            <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-md text-center">
-              <div className="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4"></div>
-              <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
-              <p className="text-gray-600 mb-3">{member.role}</p>
-              <p className="text-sm text-gray-500">{member.bio}</p>
+            <div key={index} className="border-t border-neutral-200 pt-6">
+              <h3 className="text-2xl font-semibold text-neutral-900 mb-2">
+                {member.name}
+              </h3>
+              <p className="text-sm uppercase tracking-wider text-neutral-500 mb-3">
+                {member.role}
+              </p>
+              <p className="text-neutral-600 leading-relaxed">
+                {member.description}
+              </p>
             </div>
           ))}
         </div>
@@ -40,8 +42,3 @@ export function TeamGrid() {
     </section>
   );
 }
-
-
-
-
-

@@ -2,13 +2,6 @@
 
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
-import { Montserrat } from "next/font/google";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-montserrat",
-});
 
 export function WhatWeOffer() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -29,19 +22,19 @@ export function WhatWeOffer() {
   ];
 
   return (
-    <section className={`py-24 px-4 sm:px-6 lg:px-8 bg-white ${montserrat.variable}`} style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 text-center">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-3 tracking-tight" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
             What we offer
           </h2>
-          <p className="text-xl text-gray-500 italic font-normal" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
+          <p className="text-xl text-gray-500 italic">
             when working at Pocket Fund
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-12 font-normal" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
+        <div className="max-w-4xl">
+          <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-12">
             We're a micro private equity firm based in Mumbai, India. Our team's experience spans a variety of backgrounds and disciplines, from investment banking and private equity to technology and operations. We work as a cohesive team that collectively develops and delivers solutions to help entrepreneurs and funds build wealth through strategic micro-acquisitions.
           </p>
 
@@ -54,24 +47,21 @@ export function WhatWeOffer() {
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex justify-between items-center text-left py-4 transition-colors"
-                  style={{ color: openFaq === index ? '#366EF3' : 'inherit' }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#366EF3'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = openFaq === index ? '#366EF3' : 'inherit'}
+                  className="w-full flex justify-between items-center text-left py-4 hover:text-blue-600 transition-colors"
                 >
-                  <span className="text-lg md:text-xl font-semibold text-gray-900 pr-8" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
+                  <span className="text-lg md:text-xl font-semibold text-gray-900 pr-8">
                     {faq.question}
                   </span>
                   <div className="flex-shrink-0">
                     {openFaq === index ? (
-                      <Minus className="w-6 h-6" style={{ color: '#366EF3' }} />
+                      <Minus className="w-6 h-6 text-blue-600" />
                     ) : (
-                      <Plus className="w-6 h-6" style={{ color: '#366EF3' }} />
+                      <Plus className="w-6 h-6 text-blue-600" />
                     )}
                   </div>
                 </button>
                 {openFaq === index && (
-                  <div className="mt-2 text-gray-600 leading-relaxed font-light animate-in slide-in-from-top-2" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
+                  <div className="mt-2 text-gray-600 leading-relaxed animate-in slide-in-from-top-2">
                     {faq.answer}
                   </div>
                 )}

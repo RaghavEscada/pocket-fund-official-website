@@ -15,8 +15,8 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-gray-900 to-black text-white h-screen flex flex-col justify-between overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-8">
+    <footer className="bg-white text-gray-900 flex flex-col justify-between overflow-hidden border-t-2" style={{ borderColor: '#366EF3' }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-12 pb-8">
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 mb-4 flex-shrink-0">
           {/* Brand Section */}
@@ -29,12 +29,12 @@ export default function Footer() {
                 height={40}
                 className="h-10 w-auto"
               />
-              <span className="text-xl font-bold">Pocket Fund</span>
+              <span className="text-xl font-bold" style={{ color: '#366EF3' }}>Pocket Fund</span>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
+            <p className="text-gray-600 text-sm leading-relaxed font-medium">
               We love deals.
             </p>
-            <p className="text-gray-400 text-xs leading-relaxed">
+            <p className="text-gray-600 text-xs leading-relaxed">
               Empowering entrepreneurs and funds to build wealth through strategic micro-acquisitions. From deal sourcing to operator placement, we handle the complexity so you can focus on growth.
             </p>
             <div className="flex gap-4 pt-2">
@@ -42,7 +42,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/pocket-fund"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-500 transition-colors"
+                className="text-gray-600 hover:text-[#366EF3] transition-colors"
                 aria-label="LinkedIn"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -53,7 +53,7 @@ export default function Footer() {
                 href="https://x.com/microsearchfund"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-500 transition-colors"
+                className="text-gray-600 hover:text-[#366EF3] transition-colors"
                 aria-label="Twitter/X"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -64,7 +64,7 @@ export default function Footer() {
                 href="https://www.instagram.com/devlikesbizness/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-500 transition-colors"
+                className="text-gray-600 hover:text-[#366EF3] transition-colors"
                 aria-label="Instagram"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -76,13 +76,13 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4" style={{ color: '#366EF3' }}>Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
+                    className="text-gray-600 hover:text-[#366EF3] transition-colors text-sm"
                   >
                     {link.name}
                   </Link>
@@ -93,42 +93,59 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
+            <h3 className="text-lg font-semibold mb-4" style={{ color: '#366EF3' }}>Contact</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#366EF3' }}>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span className="text-gray-400 text-sm">{SITE_CONFIG.address}</span>
+                <span className="text-gray-600 text-sm">{SITE_CONFIG.address}</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#366EF3' }}>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <a
                   href={`mailto:${SITE_CONFIG.email}`}
-                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                  className="text-gray-600 hover:text-[#366EF3] transition-colors text-sm"
                 >
                   {SITE_CONFIG.email}
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#366EF3' }}>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span className="text-gray-400 text-sm">24/7 Deal Flow</span>
+                <span className="text-gray-600 text-sm">24/7 Deal Flow</span>
               </li>
             </ul>
 
             <div className="mt-4 space-y-2">
               <Link
                 href="/contact"
-                className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-6 rounded-lg transition-colors text-sm"
+                className="block w-full text-center text-white font-semibold py-2.5 px-6 rounded-lg transition-colors text-sm"
+                style={{ backgroundColor: '#366EF3' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2d5dd9'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#366EF3'}
               >
                 Get in Touch
               </Link>
-              <button className="block w-full text-center border border-gray-700 hover:border-blue-500 text-gray-300 hover:text-white font-semibold py-2.5 px-6 rounded-lg transition-colors text-sm">
+              <button 
+                className="block w-full text-center border-2 font-semibold py-2.5 px-6 rounded-lg transition-colors text-sm"
+                style={{ 
+                  borderColor: '#366EF3',
+                  color: '#366EF3',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#366EF3';
+                  e.currentTarget.style.color = 'white';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = '#366EF3';
+                }}
+              >
                 Book a Call
               </button>
             </div>
@@ -136,23 +153,23 @@ export default function Footer() {
         </div>
 
         {/* Disclaimer */}
-        <div className="border-t border-gray-800 pt-4 mb-4">
-          <p className="text-gray-500 text-xs leading-relaxed line-clamp-3">
-            <span className="font-semibold text-gray-400">Disclaimer:</span> Pocket Fund provides advisory and consulting services to buyers of small and mid-sized businesses. We are not a registered broker-dealer, investment adviser, or law firm, and nothing on this website constitutes legal, tax, investment, or financial advice. All content is for informational purposes only and may not be complete or up-to-date. Engagements are governed solely by executed agreements. Use of this website is at your own risk; Pocket Fund is not liable for any losses arising from reliance on the information provided.
+        <div className="border-t pt-4 mb-4" style={{ borderColor: '#366EF3' }}>
+          <p className="text-gray-600 text-xs leading-relaxed line-clamp-3">
+            <span className="font-semibold" style={{ color: '#366EF3' }}>Disclaimer:</span> Pocket Fund provides advisory and consulting services to buyers of small and mid-sized businesses. We are not a registered broker-dealer, investment adviser, or law firm, and nothing on this website constitutes legal, tax, investment, or financial advice. All content is for informational purposes only and may not be complete or up-to-date. Engagements are governed solely by executed agreements. Use of this website is at your own risk; Pocket Fund is not liable for any losses arising from reliance on the information provided.
           </p>
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-800 pt-4">
+        <div className="border-t pt-4" style={{ borderColor: '#366EF3' }}>
           <div className="flex flex-col md:flex-row justify-between items-center gap-2">
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-600 text-sm">
               © {new Date().getFullYear()} Pocket Fund. All rights reserved.
             </p>
-            <div className="flex gap-6 text-sm text-gray-500">
-              <Link href="/privacy" className="hover:text-white transition-colors">
+            <div className="flex gap-6 text-sm text-gray-600">
+              <Link href="/privacy" className="hover:text-[#366EF3] transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="hover:text-white transition-colors">
+              <Link href="/terms" className="hover:text-[#366EF3] transition-colors">
                 Terms of Service
               </Link>
             </div>
@@ -161,12 +178,12 @@ export default function Footer() {
       </div>
 
       {/* Large Brand Text - Grounded at Bottom */}
-      <div className="w-full flex-shrink-0">
-        <h2 className="text-8xl xl:text-[10rem] font-bold text-center bg-gradient-to-r from-gray-800 via-gray-700 pt-0 to-gray-800 bg-clip-text text-transparent tracking-tighter leading-none whitespace-nowrap">
-          POCKET FUND
+      <div className="w-full flex-shrink-0 bg-gradient-to-b from-white to-[#366EF3]/5 py-8">
+        <h2 className="text-11xl xl:text-[10rem] font-bold text-center tracking-tighter leading-none whitespace-nowrap opacity-60">
+          <span style={{ color: '#000000' }}>POCKET</span>{' '}
+          <span style={{ color: '#366EF3' }}>FUND</span>
         </h2>
       </div>
     </footer>
   );
 }
-

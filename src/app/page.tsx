@@ -4,8 +4,12 @@ import { generateMetadata as genMeta } from "@/lib/seo";
 import { PAGE_METADATA } from "@/lib/constants";
 import { SEO } from "@/components/shared/SEO";
 import { generateOrganizationSchema } from "@/lib/seo";
-import { HomeHero, Stats, WhatWeDo, BusinessTypesBento, HowWeWork } from "./index";
-import { HomePageLoader } from "./components/HomePageLoader";
+import { HomeHero } from "./components/HomeHero";
+import { Stats } from "./components/Stats";
+import { WhatWeDo } from "./components/WhatWeDo";
+import { BusinessTypesBento } from "./components/BusinessTypesBento";
+import { HowWeWork } from "./components/HowWeWork";
+import { FAQ } from "./components/FAQ";
 
 // Lazy load heavy components that are below the fold
 const WorldMapSection = dynamic(() => import("./components/WorldMapSection").then(mod => ({ default: mod.WorldMapSection })), {
@@ -19,13 +23,13 @@ export default function HomePage() {
 
   return (
     <>
-      <HomePageLoader />
       <SEO structuredData={structuredData} />
       <HomeHero />
       <Stats />
       <WhatWeDo />
       <BusinessTypesBento />
       <HowWeWork />
+      <FAQ />
       <WorldMapSection />
     </>
   );

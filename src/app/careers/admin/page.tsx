@@ -29,13 +29,7 @@ export default function AdminCareersPage() {
     responsibilities: "",
     salary_range: "",
     is_active: true,
-    assignment_required: false,
-    assignment_description: "",
-    assignment_google_drive_url: "",
-    assignment_file_url: "",
   });
-  const [assignmentFile, setAssignmentFile] = useState<File | null>(null);
-  const [uploadingAssignment, setUploadingAssignment] = useState(false);
 
   useEffect(() => {
     loadJobs();
@@ -63,23 +57,11 @@ export default function AdminCareersPage() {
     e.preventDefault();
     
     try {
-      const jobData: any = {
+      const jobData = {
         ...formData,
         requirements: formData.requirements.split("\n").filter(r => r.trim()),
         responsibilities: formData.responsibilities.split("\n").filter(r => r.trim()),
       };
-
-      // Include assignment fields
-      jobData.assignment_required = formData.assignment_required;
-      if (formData.assignment_required) {
-        jobData.assignment_description = formData.assignment_description;
-      }
-      if (formData.assignment_google_drive_url) {
-        jobData.assignment_google_drive_url = formData.assignment_google_drive_url;
-      }
-      if (formData.assignment_file_url) {
-        jobData.assignment_file_url = formData.assignment_file_url;
-      }
 
       if (editingJob) {
         await updateJobPosting(editingJob.id, jobData);
@@ -108,12 +90,7 @@ export default function AdminCareersPage() {
       responsibilities: Array.isArray(job.responsibilities) ? job.responsibilities.join("\n") : "",
       salary_range: job.salary_range || "",
       is_active: job.is_active,
-      assignment_required: (job as any).assignment_required || false,
-      assignment_description: (job as any).assignment_description || "",
-      assignment_google_drive_url: (job as any).assignment_google_drive_url || "",
-      assignment_file_url: (job as any).assignment_file_url || "",
     });
-    setAssignmentFile(null);
     setShowForm(true);
   };
 
@@ -140,49 +117,9 @@ export default function AdminCareersPage() {
       responsibilities: "",
       salary_range: "",
       is_active: true,
-      assignment_required: false,
-      assignment_description: "",
-      assignment_google_drive_url: "",
-      assignment_file_url: "",
     });
-    setAssignmentFile(null);
     setEditingJob(null);
     setShowForm(false);
-  };
-
-  const handleAssignmentFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    if (file.size > 10 * 1024 * 1024) {
-      alert("File size must be less than 10MB");
-      return;
-    }
-
-    setUploadingAssignment(true);
-    try {
-      const supabase = createClient();
-      const fileExt = file.name.split('.').pop();
-      const filePath = `assignments/${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
-
-      const { error: uploadError } = await supabase.storage
-        .from('assignments')
-        .upload(filePath, file);
-
-      if (uploadError) throw uploadError;
-
-      const { data } = supabase.storage
-        .from('assignments')
-        .getPublicUrl(filePath);
-
-      setFormData({ ...formData, assignment_file_url: data.publicUrl });
-      setAssignmentFile(file);
-    } catch (error: any) {
-      console.error("Error uploading assignment file:", error);
-      alert(`Error uploading file: ${error.message || 'Please try again.'}`);
-    } finally {
-      setUploadingAssignment(false);
-    }
   };
 
   const loadApplications = async () => {
@@ -399,21 +336,9 @@ export default function AdminCareersPage() {
                                 href={app.resume_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-green-600 hover:text-green-900 mr-2"
-                                title="Download Resume"
+                                className="text-green-600 hover:text-green-900"
                               >
                                 <Download className="w-4 h-4 inline" />
-                              </a>
-                            )}
-                            {(app as any).assignment_file_url && (
-                              <a
-                                href={(app as any).assignment_file_url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-purple-600 hover:text-purple-900"
-                                title="Download Submitted Assignment"
-                              >
-                                <FileText className="w-4 h-4 inline" />
                               </a>
                             )}
                           </td>
@@ -570,90 +495,10 @@ export default function AdminCareersPage() {
                 />
               </div>
 
-              <div className="border-t pt-4 mt-4">
-                <div className="mb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Assignment</h3>
-                  <p className="text-sm text-gray-600 mb-4">
-                    If this position requires candidates to complete an assignment, enable this option and provide the assignment details below.
-                  </p>
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id="assignment_required"
-                      checked={formData.assignment_required}
-                      onChange={(e) => setFormData({ ...formData, assignment_required: e.target.checked })}
-                      className="mr-2 w-4 h-4"
-                    />
-                    <label htmlFor="assignment_required" className="text-sm font-medium text-gray-700">
-                      Assignment Required
-                    </label>
-                  </div>
-                </div>
-
-                {formData.assignment_required && (
-                  <div className="bg-gray-50 rounded-lg p-4 space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Assignment Description *
-                      </label>
-                      <textarea
-                        required
-                        rows={4}
-                        value={formData.assignment_description}
-                        onChange={(e) => setFormData({ ...formData, assignment_description: e.target.value })}
-                        placeholder="Describe the assignment requirements, what candidates need to complete, and any specific instructions..."
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      />
-                      <p className="text-xs text-gray-500 mt-1">Provide a clear description of what candidates need to complete for this assignment</p>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Assignment Problem Statement Source (Optional)
-                      </label>
-                      <input
-                        type="url"
-                        value={formData.assignment_google_drive_url}
-                        onChange={(e) => setFormData({ ...formData, assignment_google_drive_url: e.target.value })}
-                        placeholder="https://drive.google.com/..."
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      />
-                      <p className="text-xs text-gray-500 mt-1">Google Drive link to assignment problem statement</p>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Assignment Problem Statement File (Optional)
-                      </label>
-                      <input
-                        type="file"
-                        accept=".pdf,.doc,.docx,.zip"
-                        onChange={handleAssignmentFileChange}
-                        disabled={uploadingAssignment}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      />
-                      {uploadingAssignment && (
-                        <p className="text-sm text-gray-500 mt-1">Uploading...</p>
-                      )}
-                      {formData.assignment_file_url && !assignmentFile && (
-                        <p className="text-sm text-green-600 mt-1">File already uploaded</p>
-                      )}
-                      {assignmentFile && (
-                        <p className="text-sm text-green-600 mt-1">✓ {assignmentFile.name}</p>
-                      )}
-                      <p className="text-xs text-gray-500 mt-1">Upload assignment file (PDF, DOC, DOCX, or ZIP - Max 10MB)</p>
-                    </div>
-                  </div>
-                )}
-              </div>
-
               <div className="flex gap-4">
                 <Button
                   type="submit"
-                  className="text-white"
-                  style={{ backgroundColor: '#366EF3' }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2d5dd9'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#366EF3'}
+                  className="bg-blue-600 hover:bg-blue-700 text-white"
                 >
                   {editingJob ? "Update" : "Create"} Job Posting
                 </Button>
@@ -819,18 +664,7 @@ export default function AdminCareersPage() {
                         Portfolio Website
                       </a>
                     )}
-                    {(selectedApplication as any).assignment_file_url && (
-                      <a
-                        href={(selectedApplication as any).assignment_file_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-purple-600 hover:text-purple-800"
-                      >
-                        <Download className="w-4 h-4" />
-                        Download Submitted Assignment
-                      </a>
-                    )}
-                    {!selectedApplication.resume_url && !selectedApplication.linkedin_url && !selectedApplication.portfolio_url && !(selectedApplication as any).assignment_file_url && (
+                    {!selectedApplication.resume_url && !selectedApplication.linkedin_url && !selectedApplication.portfolio_url && (
                       <p className="text-gray-500 text-sm">No additional links provided</p>
                     )}
                   </div>

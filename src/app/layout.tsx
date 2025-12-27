@@ -1,16 +1,24 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Montserrat } from "next/font/google";
+import { Inter, Crimson_Text } from "next/font/google";
 import "./globals.css";
 import Menu from "@/components/menu/menu";
 import Footer from "@/components/footer/footer";
 import { SITE_CONFIG } from "@/lib/constants";
 import { generateMetadata as genMeta } from "@/lib/seo";
 
-const montserrat = Montserrat({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-montserrat",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const crimsonText = Crimson_Text({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-crimson",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -32,8 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} antialiased bg-white`}
-        style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
+        className={`${inter.variable} ${crimsonText.variable} antialiased bg-white`}
       >
         <div className="sticky top-0 z-50 bg-white shadow-md">
           <Menu />

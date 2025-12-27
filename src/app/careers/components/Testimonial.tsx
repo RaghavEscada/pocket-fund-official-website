@@ -8,13 +8,13 @@ export function Testimonial() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
-          <div className="relative h-[400px] rounded-lg overflow-hidden bg-white border-2 border-gray-200 shadow-sm">
+          <div className="relative h-[790px] rounded-lg overflow-hidden bg-white border-2 border-gray-200 shadow-sm">
             <Image
-              src="/images/raghav.png"
-              alt="Raghav Krishna"
+              src="/images/People/devshah.JPG"
+              alt="dev shah"
               fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover grayscale"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
 
@@ -25,8 +25,8 @@ export function Testimonial() {
             </blockquote>
             <div className="flex items-center gap-4">
               <div>
-                <div className="font-semibold text-gray-900">Raghav Krishna</div>
-                <div className="text-sm text-gray-600">Pocket Fund Team</div>
+                <div className="font-semibold text-gray-900">Dev Shah</div>
+                <div className="text-sm text-gray-600">Founder & CEO of Pocket Fund </div>
               </div>
             </div>
           </div>

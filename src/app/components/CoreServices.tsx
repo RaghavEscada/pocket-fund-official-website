@@ -1,75 +1,60 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { Search, FileCheck, Handshake, Users, TrendingUp } from 'lucide-react';
-import { Card } from '@/components/ui/card';
-
 const services = [
   {
-    icon: Search,
-    title: 'Deal Sourcing',
-    description: 'Off-market focus with exclusive deal flow and proprietary networks',
+    title: "Deal Sourcing",
+    description: "Proprietary deal flow through inbound, outbound, and network-driven origination.",
   },
   {
-    icon: FileCheck,
-    title: 'Due Diligence',
-    description: 'Technical, financial, and operational analysis with comprehensive risk assessment',
+    title: "Due Diligence",
+    description: "Financial, operational, and risk-focused diligence with operator insight.",
   },
   {
-    icon: Handshake,
-    title: 'Deal Structuring & Negotiation',
-    description: 'Optimal terms negotiation and transaction structure optimization',
+    title: "Deal Structuring & Negotiation",
+    description: "Buyer-aligned structuring, valuation discipline, and closing support.",
   },
   {
-    icon: Users,
-    title: 'Transition + Operator Placement',
-    description: 'Seamless handover with vetted operator matching and integration support',
+    title: "Transition & Operator Placement",
+    description: "Seamless post-close transitions with vetted operators and advisors.",
   },
   {
-    icon: TrendingUp,
-    title: 'Growth Playbooks + Exit Prep',
-    description: 'Strategic growth roadmaps and exit strategy preparation for maximum value',
+    title: "Growth Playbook",
+    description: "Proven execution frameworks across revenue, cost, systems, and talent.",
+  },
+  {
+    title: "Exit Preparation",
+    description: "KPI discipline, reporting maturity, and buyer-ready positioning.",
   },
 ];
 
 export function CoreServices() {
   return (
-    <section className="py-12 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Process</h2>
-          <p className="text-xl text-muted-foreground mb-2">Core Services</p>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            End-to-end acquisition support from deal sourcing to exit preparation
+    <section className="py-32 bg-white">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Section Header */}
+        <div className="mb-20">
+          <h2 className="text-4xl md:text-5xl font-semibold text-neutral-900 mb-4">
+            Core Services
+          </h2>
+          <p className="text-lg text-neutral-600 max-w-2xl">
+            Full investment lifecycle capability from origination to exit.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
           {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="h-full"
-            >
-              <Card className="p-6 h-full hover:shadow-lg transition-shadow border-2 hover:border-primary flex flex-col">
-                <service.icon className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-muted-foreground flex-grow">{service.description}</p>
-              </Card>
-            </motion.div>
+            <div key={index} className="border-t border-neutral-200 pt-6">
+              <h3 className="text-2xl font-semibold text-neutral-900 mb-3">
+                {service.title}
+              </h3>
+              <p className="text-neutral-600 leading-relaxed">
+                {service.description}
+              </p>
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
 }
-
