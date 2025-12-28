@@ -11,6 +11,7 @@ import {
   IconX,
 } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const businessDetails = {
   saas: {
@@ -153,8 +154,11 @@ export function BusinessTypesBento() {
 
   return (
     <>
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white relative overflow-hidden">
+        {/* Decorative background */}
+        <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-blue-50/30 to-transparent" />
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <span className="text-blue-600 text-sm font-semibold tracking-wide uppercase mb-4 block">
               Investment Focus
@@ -167,6 +171,30 @@ export function BusinessTypesBento() {
               Specialized focus on high-quality digital businesses with proven revenue models and sustainable competitive advantages
             </p>
           </div>
+
+          {/* Featured visual element */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-12 max-w-5xl mx-auto"
+          >
+            <div className="relative h-72 rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/Collaborative Meeting on Modern Sofa.png"
+                alt="Business strategy discussion"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 via-transparent to-transparent" />
+              <div className="absolute bottom-8 left-8 right-8">
+                <p className="text-white text-2xl font-bold drop-shadow-lg">
+                  Focused on businesses with proven models and clear paths to growth
+                </p>
+              </div>
+            </div>
+          </motion.div>
 
           <BentoGrid className="max-w-6xl mx-auto md:auto-rows-[20rem]">
             {items.map((item, i) => (
@@ -206,7 +234,7 @@ export function BusinessTypesBento() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 onClick={(e) => e.stopPropagation()}
-                className="bg-white rounded-2xl max-w-4xl w-full my-8 shadow-2xl max-h-[90vh] overflow-y-auto"
+                className="bg-white rounded-3xl max-w-4xl w-full my-8 shadow-2xl max-h-[90vh] overflow-y-auto"
               >
                 {(() => {
                   const business = businessDetails[selectedBusiness];
@@ -218,7 +246,7 @@ export function BusinessTypesBento() {
                       <div className="flex justify-end mb-6">
                         <button
                           onClick={() => setSelectedBusiness(null)}
-                          className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors"
+                          className="w-10 h-10 flex items-center justify-center rounded-2xl hover:bg-gray-100 transition-colors"
                         >
                           <IconX className="w-6 h-6 text-gray-600" />
                         </button>
@@ -226,7 +254,7 @@ export function BusinessTypesBento() {
 
                       {/* Header */}
                       <div className="flex items-center gap-4 mb-8">
-                        <div className="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center">
+                        <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center shadow-sm">
                           <IconComponent className="w-8 h-8 text-blue-600" />
                         </div>
                         <div>
@@ -239,11 +267,11 @@ export function BusinessTypesBento() {
 
                       {/* Revenue & Valuation */}
                       <div className="grid grid-cols-2 gap-4 mb-8">
-                        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                        <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 shadow-sm">
                           <div className="text-sm text-blue-600 font-semibold mb-1">Revenue Range</div>
                           <div className="text-2xl font-bold text-gray-900">{business.revenue}</div>
                         </div>
-                        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                        <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 shadow-sm">
                           <div className="text-sm text-blue-600 font-semibold mb-1">Valuation Range</div>
                           <div className="text-2xl font-bold text-gray-900">{business.valuations}</div>
                         </div>
@@ -263,7 +291,7 @@ export function BusinessTypesBento() {
                       </div>
 
                       {/* Ideal Profile */}
-                      <div className="bg-neutral-50 border border-neutral-200 rounded-xl p-6">
+                      <div className="bg-neutral-50 border border-neutral-200 rounded-2xl p-6 shadow-sm">
                         <h4 className="text-lg font-semibold text-gray-900 mb-2">Ideal Profile</h4>
                         <p className="text-gray-700 leading-relaxed">{business.idealProfile}</p>
                       </div>

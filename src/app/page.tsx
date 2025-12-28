@@ -7,9 +7,12 @@ import { generateOrganizationSchema } from "@/lib/seo";
 import { HomeHero } from "./components/HomeHero";
 import { Stats } from "./components/Stats";
 import { WhatWeDo } from "./components/WhatWeDo";
+import { KeyBenefits } from "./components/KeyBenefits";
+import { WhyChooseUs } from "./components/WhyChooseUs";
 import { BusinessTypesBento } from "./components/BusinessTypesBento";
 import { HowWeWork } from "./components/HowWeWork";
 import { FAQ } from "./components/FAQ";
+import { Testimonials } from "./components/Testimonials";
 
 // Lazy load heavy components that are below the fold
 const WorldMapSection = dynamic(() => import("./components/WorldMapSection").then(mod => ({ default: mod.WorldMapSection })), {
@@ -27,9 +30,12 @@ export default function HomePage() {
       <HomeHero />
       <Stats />
       <WhatWeDo />
+      <KeyBenefits />
+      <WhyChooseUs />
       <BusinessTypesBento />
       <HowWeWork />
       <FAQ />
+      <Testimonials />
       <WorldMapSection />
     </>
   );

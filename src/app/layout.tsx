@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter, Crimson_Text } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Menu from "@/components/menu/menu";
 import Footer from "@/components/footer/footer";
@@ -14,10 +14,10 @@ const inter = Inter({
   display: "swap",
 });
 
-const crimsonText = Crimson_Text({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-crimson",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-playfair",
   display: "swap",
 });
 
@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${crimsonText.variable} antialiased bg-white`}
+        className={`${inter.variable} ${playfair.variable} antialiased bg-white`}
       >
         <div className="sticky top-0 z-50 bg-white shadow-md">
           <Menu />

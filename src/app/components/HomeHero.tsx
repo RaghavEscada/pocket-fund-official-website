@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { LogoMarquee } from "./LogoMarquee";
 
 // Responsive Lottie Player Component
 const LottiePlayer = () => {
@@ -72,8 +73,8 @@ const LottiePlayer = () => {
 export function HomeHero() {
   return (
     <section className="min-h-screen flex items-center bg-white">
-      <div className="max-w-7xl mx-auto px-6 py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-6 pt-16 pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
           {/* Left: Content */}
           <div className="max-w-2xl">
             {/* Main Headline */}
@@ -94,7 +95,7 @@ export function HomeHero() {
             {/* CTA */}
             <a 
               href="/contact" 
-              className="inline-block px-8 py-4 border border-neutral-900 text-neutral-900 font-medium tracking-wide hover:bg-neutral-900 hover:text-white transition-colors duration-200"
+              className="inline-block px-8 py-4 border-2 border-neutral-900 text-neutral-900 font-medium tracking-wide hover:bg-neutral-900 hover:text-white transition-all duration-300 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
               Partner With Us
             </a>
@@ -106,6 +107,11 @@ export function HomeHero() {
               <LottiePlayer />
             </div>
           </div>
+        </div>
+
+        {/* Logo Marquee - Visible in first viewport */}
+        <div className="mt-8">
+          <LogoMarquee />
         </div>
       </div>
     </section>

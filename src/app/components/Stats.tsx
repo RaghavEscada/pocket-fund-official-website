@@ -25,8 +25,8 @@ const stats = [
 
 export function Stats() {
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-32 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Text Content */}
           <motion.div
@@ -35,14 +35,15 @@ export function Stats() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 border border-neutral-300 px-4 py-2 mb-8 bg-neutral-50">
-              <span className="text-sm font-medium uppercase tracking-wider text-neutral-700">ABOUT US</span>
+            <div className="inline-flex items-center gap-2 mb-8">
+              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+              <span className="text-sm font-medium tracking-wide text-neutral-600">About Us</span>
             </div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
-              <span className="text-gray-900">Pocket</span>{' '}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-8 leading-tight">
+              <span className="text-neutral-900">Pocket</span>{' '}
               <span className="text-blue-600">Fund</span>
             </h2>
-            <div className="space-y-6 text-lg text-gray-600 mb-8">
+            <div className="space-y-6 text-lg text-neutral-600 mb-8 leading-relaxed">
               <p>
                 At Pocket Fund, we are dedicated to transforming the acquisition landscape for micro digital businesses.
               </p>
@@ -56,7 +57,7 @@ export function Stats() {
               </p>
             </div>
             <Link href="/contact">
-              <Button size="lg" className="bg-neutral-900 hover:bg-neutral-800 text-white text-lg border border-neutral-900">
+              <Button size="lg" className="bg-neutral-900 hover:bg-neutral-800 text-white text-lg border border-neutral-900 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
                 Start Reviewing Deals Today
                 <span className="ml-2">→</span>
               </Button>
@@ -78,7 +79,7 @@ export function Stats() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white border-2 border-blue-600 p-6 hover:shadow-md transition-all"
+                className="bg-white border-2 border-blue-600 p-6 rounded-3xl hover:shadow-2xl hover:shadow-blue-100 transition-all duration-300"
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2 text-neutral-900">{stat.value}</div>
                 <div className="text-sm text-gray-600">{stat.label}</div>

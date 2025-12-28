@@ -16,7 +16,7 @@
 
 body {
   background: #ffffff;
-  font-family: var(--font-crimson), Georgia, serif;
+  font-family: var(--font-playfair), Georgia, serif;
   color: #0a0a0a;
 }
 
@@ -26,14 +26,14 @@ html {
 
 /* Institutional Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-crimson), Georgia, serif;
-  font-weight: 600;
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 400;
   color: #0a0a0a;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 p, li, span, a, button, input, textarea, select {
-  font-family: var(--font-crimson), Georgia, serif;
+  font-family: var(--font-playfair), Georgia, serif;
 }
 
 
@@ -72,6 +72,32 @@ p, li, span, a, button, input, textarea, select {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration) linear infinite;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration) linear infinite;
 }
 
 
